@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#8b5e5a" />
+  <meta name="description" content="RSVP for Clarissa Valeria's Quinceañera — October 24, 2026." />
+  <title>Clarissa Valeria's XV — RSVP</title>
+  <style>
+    :root{
+      --rose:#8b5e5a;--rose-dark:#69423f;--blush:#ead4cf;--cream:#fffaf4;
+      --ink:#392f2c;--muted:#766762;--gold:#b38a55;--line:#e5d6cf;--white:#fff;
+      --shadow:0 18px 50px rgba(73,48,43,.14);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;min-height:100vh;color:var(--ink);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%,rgba(179,138,85,.10),transparent 28rem),
+        radial-gradient(circle at 90% 20%,rgba(139,94,90,.10),transparent 30rem),
+        linear-gradient(180deg,#fbf4ee 0%,#fffaf4 55%,#f7eee7 100%);
+    }
+    body:before,body:after{
+      content:"";position:fixed;z-index:-1;border:1px solid rgba(179,138,85,.22);
+      width:260px;height:260px;border-radius:50%;transform:rotate(18deg)
+    }
+    body:before{left:-120px;top:110px} body:after{right:-130px;bottom:60px}
+    .page{width:min(100%,720px);margin:auto;padding:28px 18px 56px}
+    .hero{text-align:center;padding:18px 10px 26px}
+    .eyebrow{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:800}
+    h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(2.45rem,10vw,4.4rem);line-height:.96;margin:14px 0 8px;font-weight:500}
+    .xv{display:block;color:var(--rose);font-size:.58em;letter-spacing:.08em;margin-top:8px}
+    .sub{margin:14px auto 0;max-width:520px;color:var(--muted);font-size:1rem;line-height:1.55}
+    .details{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+    .pill{background:rgba(255,255,255,.72);border:1px solid var(--line);padding:9px 13px;border-radius:999px;font-size:.9rem}
+    .card{background:rgba(255,255,255,.93);border:1px solid rgba(229,214,207,.9);border-radius:28px;padding:26px;box-shadow:var(--shadow);backdrop-filter:blur(9px)}
+    .card h2{font-family:Georgia,"Times New Roman",serif;text-align:center;font-size:2rem;font-weight:500;margin:0 0 5px}
+    .card .lead{text-align:center;color:var(--muted);margin:0 0 24px;font-size:.95rem}
+    .field{margin:18px 0}
+    label,.label{display:block;font-weight:750;margin-bottom:8px;font-size:.97rem}
+    .hint{display:block;font-size:.82rem;color:var(--muted);font-weight:500;margin-top:2px}
+    input,select,textarea{
+      width:100%;border:1px solid var(--line);background:#fff;border-radius:15px;
+      padding:14px 15px;font:inherit;color:var(--ink);outline:none;transition:.18s
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(139,94,90,.10)}
+    textarea{min-height:92px;resize:vertical}
+    .choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}
+    .choice{position:relative}
+    .choice input{position:absolute;opacity:0;pointer-events:none}
+    .choice label{
+      display:flex;align-items:center;justify-content:center;gap:9px;margin:0;
+      min-height:58px;border:1px solid var(--line);border-radius:16px;background:#fff;cursor:pointer;
+      transition:.18s;text-align:center
+    }
+    .choice input:checked+label{background:var(--rose);color:#fff;border-color:var(--rose);box-shadow:0 8px 22px rgba(139,94,90,.22)}
+    .hidden{display:none}
+    .submit{
+      border:0;width:100%;padding:16px 18px;border-radius:16px;background:var(--rose);
+      color:#fff;font-weight:850;font-size:1rem;cursor:pointer;margin-top:10px;
+      box-shadow:0 10px 24px rgba(139,94,90,.24);transition:.18s
+    }
+    .submit:hover{background:var(--rose-dark);transform:translateY(-1px)}
+    .submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .tiny{text-align:center;color:var(--muted);font-size:.79rem;line-height:1.5;margin-top:12px}
+    .message{display:none;text-align:center;padding:14px;border-radius:14px;margin-top:14px}
+    .message.show{display:block}.message.ok{background:#edf7ef;color:#315a39}.message.err{background:#fff0ef;color:#7b3430}
+    .footer{text-align:center;color:var(--muted);font-size:.82rem;padding:24px 10px 0}
+    .ornament{font-size:1.35rem;letter-spacing:.16em;color:var(--gold);margin-top:8px}
+    @media(max-width:520px){
+      .page{padding:18px 14px 40px}.card{padding:22px 17px;border-radius:23px}.choice-grid{grid-template-columns:1fr}.hero{padding-top:8px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">You're invited • Estás invitado</div>
+      <h1>Clarissa Valeria <span class="xv">MIS XV AÑOS</span></h1>
+      <div class="ornament">✦ ♡ ✦</div>
+      <p class="sub">Nos encantaría celebrar contigo. Confirma tu asistencia en menos de un minuto.<br><span lang="en">We'd love to celebrate with you. RSVP in less than a minute.</span></p>
+      <div class="details">
+        <span class="pill">📅 October 24, 2026</span>
+        <span class="pill">🕕 6:00 PM – 1:00 AM</span>
+        <span class="pill">🤠 Western preferred</span>
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="rsvp-title">
+      <h2 id="rsvp-title">RSVP</h2>
+      <p class="lead">Solo necesitamos saber si vienes y cuántas personas asistirán.</p>
+
+      <form id="rsvpForm">
+        <div class="field">
+          <label for="name">Nombre / Name</label>
+          <input id="name" name="name" autocomplete="name" placeholder="Tu nombre y apellido" required />
+        </div>
+
+        <div class="field">
+          <span class="label">¿Asistirás? / Will you attend?</span>
+          <div class="choice-grid">
+            <div class="choice">
+              <input type="radio" id="yes" name="attending" value="Yes" required>
+              <label for="yes">🤠 Sí, ahí estaré</label>
+            </div>
+            <div class="choice">
+              <input type="radio" id="no" name="attending" value="No" required>
+              <label for="no">💌 No podré asistir</label>
+            </div>
+          </div>
+        </div>
+
+        <div id="yesFields" class="hidden">
+          <div class="field">
+            <label for="partySize">¿Cuántas personas asistirán?
+              <span class="hint">Incluyéndote a ti / Including yourself</span>
+            </label>
+            <select id="partySize" name="partySize">
+              <option value="">Selecciona / Select</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="guestNames">Nombres de los invitados
+              <span class="hint">Opcional / Optional</span>
+            </label>
+            <textarea id="guestNames" name="guestNames" placeholder="Ej. María, José, Ana…"></textarea>
+          </div>
+        </div>
+
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
+
+        <button class="submit" id="submitBtn" type="submit">Confirmar asistencia ✨</button>
+        <div id="message" class="message" role="status" aria-live="polite"></div>
+        <p class="tiny">No necesitas descargar ninguna aplicación ni crear una cuenta.<br>No app download or account required.</p>
+      </form>
+    </section>
+
+    <footer class="footer">Con cariño, la familia de Clarissa ♡</footer>
+  </main>
+
+  <script>
+    // RSVP receiver.
+    // Replace this with a Google Apps Script / Formspree endpoint when connected.
+    const RSVP_ENDPOINT = "";
+
+    const form = document.getElementById("rsvpForm");
+    const yesFields = document.getElementById("yesFields");
+    const partySize = document.getElementById("partySize");
+    const message = document.getElementById("message");
+    const submitBtn = document.getElementById("submitBtn");
+
+    document.querySelectorAll('input[name="attending"]').forEach(radio => {
+      radio.addEventListener("change", () => {
+        const isYes = document.getElementById("yes").checked;
+        yesFields.classList.toggle("hidden", !isYes);
+        partySize.required = isYes;
+        if (!isYes) {
+          partySize.value = "";
+          document.getElementById("guestNames").value = "";
+        }
+      });
+    });
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      message.className = "message";
+      if (!form.reportValidity()) return;
+
+      if (!RSVP_ENDPOINT) {
+        message.textContent = "El RSVP está casi listo. El anfitrión todavía está conectando el registro de respuestas.";
+        message.className = "message show err";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Enviando… / Sending…";
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.submittedAt = new Date().toISOString();
+
+      try {
+        const response = await fetch(RSVP_ENDPOINT, {
+          method: "POST",
+          headers: {"Content-Type":"application/json"},
+          body: JSON.stringify(data)
+        });
+        if (!response.ok) throw new Error("Bad response");
+        form.reset();
+        yesFields.classList.add("hidden");
+        partySize.required = false;
+        message.textContent = "¡Gracias! 🎀 Hemos recibido tu confirmación. Nos vemos en los XV de Clarissa.";
+        message.className = "message show ok";
+      } catch (err) {
+        message.textContent = "No se pudo enviar. Inténtalo otra vez en un momento. / Couldn't send — please try again.";
+        message.className = "message show err";
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Confirmar asistencia ✨";
+      }
+    });
+  </script>
+</body>
+</html>
