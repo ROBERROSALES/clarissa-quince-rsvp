@@ -54,17 +54,17 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 .success{display:none;text-align:center;padding:26px 8px}.success.show{display:block}.success .check{width:62px;height:62px;border-radius:50%;margin:0 auto 12px;background:#eaf5eb;color:#315a39;display:grid;place-items:center;font-size:1.6rem}.success h3{font-family:"Playfair Display",serif;font-size:2rem;margin:0 0 8px}.success p{color:var(--muted);margin:0}
 
 
-/* XV SOCIAL DEMO */
-.social-demo{background:linear-gradient(180deg,rgba(255,253,251,.96),rgba(249,235,231,.88))}
+/* XV SOCIAL WALL */
+.social-wall{background:linear-gradient(180deg,rgba(255,253,251,.96),rgba(249,235,231,.88))}
 .social-compose{max-width:650px;margin:22px auto 0;padding:18px;border:1px solid var(--line);border-radius:22px;background:#fff;text-align:left;box-shadow:0 12px 32px rgba(91,50,55,.07)}
 .social-user{display:flex;align-items:center;gap:10px}.social-avatar,.post-avatar{flex:0 0 auto;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f1d6d2,#dcaeb0);color:var(--wine);font-family:"Playfair Display",serif;font-weight:700}
 .social-user input{padding:11px 13px}.social-compose textarea{margin-top:10px;min-height:82px}
-.social-tools{display:flex;justify-content:space-between;gap:10px;margin-top:10px}.social-tools button{border:1px solid var(--line);border-radius:12px;padding:10px 13px;font:700 .82rem "DM Sans",sans-serif;cursor:pointer}.demo-photo{background:#fff;color:var(--wine)}.demo-post{background:var(--wine);color:#fff}
-.demo-note{text-align:center;color:var(--muted);font-size:.7rem;margin-top:10px}
+.social-tools{display:flex;justify-content:space-between;gap:10px;margin-top:10px}.social-tools button,.photo-button{border:1px solid var(--line);border-radius:12px;padding:10px 13px;font:700 .82rem "DM Sans",sans-serif;cursor:pointer}.photo-button{display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--wine);text-transform:none;letter-spacing:0;margin:0}.social-submit{background:var(--wine);color:#fff}.social-submit:disabled,.photo-button.disabled{opacity:.6;cursor:not-allowed}
+.social-file{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}.photo-selection{display:none;align-items:center;gap:10px;margin-top:10px;padding:9px;border:1px solid var(--line);border-radius:13px;background:var(--cream)}.photo-selection.show{display:flex}.photo-selection img{width:54px;height:54px;border-radius:10px;object-fit:cover}.photo-selection span{min-width:0;flex:1;font-size:.75rem;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.remove-photo{border:0;background:transparent;color:var(--wine);font-size:1.15rem;cursor:pointer;padding:7px}
+.social-note{text-align:center;color:var(--muted);font-size:.7rem;margin-top:10px}.social-status{display:none;margin-top:11px;padding:11px 13px;border-radius:12px;text-align:center;font-size:.78rem;line-height:1.4}.social-status.show{display:block}.social-status.loading{background:#f8f0e4;color:#705329}.social-status.error{background:#fff0ef;color:#823e3a}.social-status.success{background:#eaf5eb;color:#315a39}
 .social-feed{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:650px;margin:14px auto 0;text-align:left}
-.social-post{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 10px 28px rgba(91,50,55,.06)}.post-head{display:flex;gap:10px;align-items:center}.post-head b{display:block;color:var(--ink);font-size:.9rem}.post-head small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.social-post p{font-size:.88rem!important;line-height:1.45!important;margin:13px 0!important;color:var(--ink)!important}.post-actions{border-top:1px solid #f1e3e0;padding-top:10px;color:var(--rose);font-size:.75rem;font-weight:700}
-.photo-placeholder{aspect-ratio:4/3;margin:13px 0 8px;border-radius:14px;background:linear-gradient(135deg,#f7e4e0,#f1d3cd);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--wine);padding:14px}.photo-placeholder span{font-size:2rem}.photo-placeholder b{font-size:.78rem;margin-top:5px}.photo-placeholder small{font-size:.68rem;color:var(--muted);margin-top:3px}
-@media(max-width:680px){.social-feed{grid-template-columns:1fr}.social-tools{align-items:stretch}.social-tools button{flex:1}.social-demo{padding:22px 15px}}
+.social-post{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 10px 28px rgba(91,50,55,.06)}.post-head{display:flex;gap:10px;align-items:center}.post-head b{display:block;color:var(--ink);font-size:.9rem;overflow-wrap:anywhere}.post-head small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.social-post p{font-size:.88rem!important;line-height:1.45!important;margin:13px 0!important;color:var(--ink)!important;white-space:pre-wrap;overflow-wrap:anywhere}.post-photo{display:block;width:100%;max-height:430px;object-fit:cover;margin:13px 0 8px;border-radius:14px;background:#f7e4e0}.feed-state{grid-column:1/-1;padding:22px;text-align:center;color:var(--muted);font-size:.84rem}.feed-state.error{color:#823e3a}
+@media(max-width:680px){.social-feed{grid-template-columns:1fr}.social-tools{align-items:stretch}.social-tools>*{flex:1}.social-wall{padding:22px 15px}}
 
 /* CONTENT */
 .section{margin-top:22px;border:1px solid var(--line);border-radius:27px;background:#fff9;padding:28px;text-align:center}.eyebrow{margin:0;color:var(--gold);font-size:.7rem;letter-spacing:.16em;font-weight:800}.section h2{font-size:clamp(1.7rem,5vw,2.5rem);margin:7px 0 10px}.section p{color:var(--muted);line-height:1.6;max-width:640px;margin:0 auto}
@@ -178,19 +178,21 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 </section>
 
 
-<section class="section social-demo" id="momentos">
-<p class="eyebrow">DEMO • PRÓXIMAMENTE</p>
+<section class="section social-wall" id="momentos">
+<p class="eyebrow">COMPARTE UN RECUERDO</p>
 <h2>Momentos de Clarissa ✨</h2>
-<p>Un rinconcito para compartir mensajes y fotos de los XV. Esta es una vista previa — todavía no publica nada.</p>
-<div class="social-compose">
-<div class="social-user"><div class="social-avatar">♡</div><input type="text" placeholder="Tu nombre / Display name" aria-label="Display name"></div>
-<textarea placeholder="Escribe algo bonito para Clarissa… / Share a message…" aria-label="Message"></textarea>
-<div class="social-tools"><button type="button" class="demo-photo">📷 Agregar foto</button><button type="button" class="demo-post">Publicar ✦</button></div>
-<div class="demo-note">Demo solamente • No se guardará ni publicará nada todavía.</div>
-</div>
-<div class="social-feed">
-<article class="social-post"><div class="post-head"><div class="post-avatar">M</div><div><b>María ♡</b><small>Familia • hace un momento</small></div></div><p>¡Qué emoción! Ya queremos celebrar contigo, Clarissa. 🤠💕</p><div class="post-actions">♡ Me encanta &nbsp; · &nbsp; ✨ Mis XV</div></article>
-<article class="social-post photo-post"><div class="post-head"><div class="post-avatar">A</div><div><b>Anonymous</b><small>Invitado • demo</small></div></div><div class="photo-placeholder"><span>📸</span><b>Las fotos de los invitados aparecerán aquí</b><small>Guest photos will show here</small></div><p>Una noche para recordar ✨</p><div class="post-actions">♡ 15</div></article>
+<p>Comparte un mensaje, una foto o ambos para celebrar con Clarissa. ♡<br><span lang="en">Share a message, a photo, or both to celebrate with Clarissa.</span></p>
+<form class="social-compose" id="socialForm">
+<div class="social-user"><div class="social-avatar" id="composeAvatar">♡</div><input id="socialName" name="socialName" type="text" maxlength="80" autocomplete="name" placeholder="Tu nombre / Your name" aria-label="Tu nombre / Your name" required></div>
+<textarea id="socialMessage" name="socialMessage" maxlength="1000" placeholder="Escribe algo bonito para Clarissa… / Share a message…" aria-label="Mensaje / Message"></textarea>
+<input class="social-file" id="socialPhoto" name="socialPhoto" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif">
+<div class="photo-selection" id="photoSelection"><img id="photoPreview" alt="Vista previa de la foto seleccionada"><span id="photoName"></span><button class="remove-photo" id="removePhoto" type="button" aria-label="Quitar foto">×</button></div>
+<div class="social-tools"><label class="photo-button" id="photoButton" for="socialPhoto">📷 Agregar foto</label><button type="submit" class="social-submit" id="socialSubmit">Publicar ✦</button></div>
+<div class="social-status" id="socialStatus" role="status" aria-live="polite"></div>
+<div class="social-note">Tu nombre es obligatorio • Mensaje o foto requerido • Fotos hasta 10 MB</div>
+</form>
+<div class="social-feed" id="socialFeed" aria-live="polite">
+<div class="feed-state">Cargando momentos… / Loading memories…</div>
 </div>
 </section>
 
@@ -239,7 +241,101 @@ document.getElementById("shareBtn")?.addEventListener("click",async()=>{const da
 function addToCalendar(){const ics=["BEGIN:VCALENDAR","VERSION:2.0","BEGIN:VEVENT","DTSTART:20261024T230000Z","DTEND:20261025T060000Z","SUMMARY:Clarissa Valeria Rosales - Mis XV","LOCATION:Paloma's Center Hall, 8612 N Houston Rosslyn Rd, Houston, TX 77088","DESCRIPTION:Quinceañera de Clarissa Valeria Rosales","END:VEVENT","END:VCALENDAR"].join("\r\n");const blob=new Blob([ics],{type:"text/calendar"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="Clarissa-Mis-XV.ics";a.click();URL.revokeObjectURL(a.href)}
 document.getElementById("calendarBtn")?.addEventListener("click",addToCalendar);
 document.getElementById("successCalendarBtn")?.addEventListener("click",addToCalendar);
-document.querySelectorAll(".demo-photo,.demo-post").forEach(btn=>btn.addEventListener("click",()=>alert("Demo solamente ✨\nLa versión final permitirá subir fotos y mensajes sin iniciar sesión.")));
+
+const SUPABASE_URL="https://ifanlrqzpcxjucnnjngn.supabase.co";
+const SUPABASE_KEY="sb_publishable_LFpB4pPuJvXJk63BZ0ag4w_37GeshGv";
+const POSTS_ENDPOINT=`${SUPABASE_URL}/rest/v1/xv_posts`;
+const PHOTOS_ENDPOINT=`${SUPABASE_URL}/storage/v1/object/xv-photos`;
+const PUBLIC_PHOTOS_URL=`${SUPABASE_URL}/storage/v1/object/public/xv-photos`;
+const supabaseHeaders={apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`};
+const socialForm=document.getElementById("socialForm"),socialName=document.getElementById("socialName"),socialMessage=document.getElementById("socialMessage"),socialPhoto=document.getElementById("socialPhoto"),socialSubmit=document.getElementById("socialSubmit"),socialStatus=document.getElementById("socialStatus"),socialFeed=document.getElementById("socialFeed"),composeAvatar=document.getElementById("composeAvatar"),photoSelection=document.getElementById("photoSelection"),photoPreview=document.getElementById("photoPreview"),photoName=document.getElementById("photoName"),removePhoto=document.getElementById("removePhoto"),photoButton=document.getElementById("photoButton");
+const allowedPhotoTypes=new Set(["image/jpeg","image/png","image/webp","image/heic","image/heif"]);
+let previewUrl="";
+
+function setSocialStatus(text,type=""){
+ socialStatus.textContent=text;
+ socialStatus.className=`social-status${text?" show":""}${type?` ${type}`:""}`;
+}
+function safePhotoUrl(path){
+ return `${PUBLIC_PHOTOS_URL}/${String(path).split("/").filter(Boolean).map(encodeURIComponent).join("/")}`;
+}
+function formatPostTime(value){
+ const date=new Date(value);
+ if(Number.isNaN(date.getTime()))return "Invitado / Guest";
+ return new Intl.DateTimeFormat(document.documentElement.lang||"es",{dateStyle:"medium",timeStyle:"short"}).format(date);
+}
+function clearSelectedPhoto(){
+ socialPhoto.value="";
+ if(previewUrl)URL.revokeObjectURL(previewUrl);
+ previewUrl="";photoPreview.removeAttribute("src");photoName.textContent="";photoSelection.classList.remove("show");
+}
+function validatePhoto(file){
+ if(!file)return "";
+ const extension=file.name.split(".").pop()?.toLowerCase();
+ const validExtension=["jpg","jpeg","png","webp","heic","heif"].includes(extension);
+ if((file.type&&!allowedPhotoTypes.has(file.type))||!validExtension)return "Usa una foto JPEG, PNG, WebP o HEIC. / Choose a JPEG, PNG, WebP, or HEIC photo.";
+ if(file.size>10*1024*1024)return "La foto debe pesar 10 MB o menos. / Photo must be 10 MB or smaller.";
+ return "";
+}
+function renderPosts(posts){
+ socialFeed.replaceChildren();
+ if(!posts.length){
+  const empty=document.createElement("div");empty.className="feed-state";empty.textContent="Sé la primera persona en compartir un momento. ♡ / Be the first to share a memory.";socialFeed.append(empty);return;
+ }
+ posts.forEach(post=>{
+  const article=document.createElement("article");article.className="social-post";
+  const head=document.createElement("div");head.className="post-head";
+  const avatar=document.createElement("div");avatar.className="post-avatar";avatar.textContent=String(post.name||"?").trim().charAt(0).toUpperCase()||"?";
+  const identity=document.createElement("div"),name=document.createElement("b"),time=document.createElement("small");
+  name.textContent=String(post.name||"").trim();time.textContent=formatPostTime(post.created_at);identity.append(name,time);head.append(avatar,identity);article.append(head);
+  if(post.photo_path){const img=document.createElement("img");img.className="post-photo";img.src=safePhotoUrl(post.photo_path);img.alt=`Foto compartida por ${name.textContent}`;img.loading="lazy";article.append(img)}
+  if(post.message){const body=document.createElement("p");body.textContent=post.message;article.append(body)}
+  socialFeed.append(article);
+ });
+}
+async function loadPosts(){
+ socialFeed.innerHTML='<div class="feed-state">Cargando momentos… / Loading memories…</div>';
+ try{
+  const response=await fetch(`${POSTS_ENDPOINT}?select=name,message,photo_path,created_at&order=created_at.desc&limit=100`,{headers:supabaseHeaders});
+  if(!response.ok)throw new Error(`Posts request failed (${response.status})`);
+  renderPosts(await response.json());
+ }catch(error){
+  console.error("Unable to load social posts",error);
+  socialFeed.innerHTML='<div class="feed-state error">No se pudieron cargar los momentos. Inténtalo de nuevo más tarde. / Memories could not be loaded.</div>';
+ }
+}
+socialName.addEventListener("input",()=>{composeAvatar.textContent=socialName.value.trim().charAt(0).toUpperCase()||"♡"});
+socialPhoto.addEventListener("change",()=>{
+ const file=socialPhoto.files[0],error=validatePhoto(file);
+ if(error){clearSelectedPhoto();setSocialStatus(error,"error");return}
+ setSocialStatus("");if(!file)return;
+ if(previewUrl)URL.revokeObjectURL(previewUrl);previewUrl=URL.createObjectURL(file);photoPreview.src=previewUrl;photoName.textContent=file.name;photoSelection.classList.add("show");
+});
+removePhoto.addEventListener("click",()=>{clearSelectedPhoto();setSocialStatus("")});
+socialForm.addEventListener("submit",async event=>{
+ event.preventDefault();
+ const name=socialName.value.trim(),message=socialMessage.value.trim(),file=socialPhoto.files[0];
+ const photoError=validatePhoto(file);
+ if(!name){socialName.focus();setSocialStatus("Escribe tu nombre. / Please enter your name.","error");return}
+ if(!message&&!file){socialMessage.focus();setSocialStatus("Agrega un mensaje, una foto o ambos. / Add a message, a photo, or both.","error");return}
+ if(photoError){setSocialStatus(photoError,"error");return}
+ socialSubmit.disabled=true;socialName.disabled=true;socialMessage.disabled=true;socialPhoto.disabled=true;photoButton.classList.add("disabled");setSocialStatus("Publicando tu momento… / Posting your memory…","loading");
+ try{
+  let photoPath=null;
+  if(file){
+   const extension=file.name.split(".").pop().toLowerCase();
+   photoPath=`guest-uploads/${Date.now()}-${crypto.randomUUID()}.${extension}`;
+   const upload=await fetch(`${PHOTOS_ENDPOINT}/${photoPath}`,{method:"POST",headers:{...supabaseHeaders,"Content-Type":file.type||"application/octet-stream","x-upsert":"false"},body:file});
+   if(!upload.ok)throw new Error(`Photo upload failed (${upload.status})`);
+  }
+  const insert=await fetch(POSTS_ENDPOINT,{method:"POST",headers:{...supabaseHeaders,"Content-Type":"application/json",Prefer:"return=representation"},body:JSON.stringify({name,message:message||null,photo_path:photoPath})});
+  if(!insert.ok)throw new Error(`Post insert failed (${insert.status})`);
+  socialForm.reset();clearSelectedPhoto();composeAvatar.textContent="♡";setSocialStatus("¡Tu momento ya está publicado! ♡ / Your memory is live!","success");await loadPosts();
+ }catch(error){
+  console.error("Unable to publish social post",error);setSocialStatus("No se pudo publicar. Revisa tu conexión e inténtalo otra vez. / Could not post; please try again.","error");
+ }finally{socialSubmit.disabled=false;socialName.disabled=false;socialMessage.disabled=false;socialPhoto.disabled=false;photoButton.classList.remove("disabled")}
+});
+loadPosts();
 function celebrate(){for(let i=0;i<18;i++){const s=document.createElement("span");s.className="spark";s.textContent=i%3===0?"✦":i%3===1?"♡":"✨";s.style.left=(20+Math.random()*60)+"vw";s.style.top=(65+Math.random()*18)+"vh";s.style.animationDelay=(Math.random()*.35)+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),1700)}}
 </script>
 </body>
