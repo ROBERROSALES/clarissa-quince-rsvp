@@ -64,6 +64,7 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 .social-note{text-align:center;color:var(--muted);font-size:.7rem;margin-top:10px}.social-status{display:none;margin-top:11px;padding:11px 13px;border-radius:12px;text-align:center;font-size:.78rem;line-height:1.4}.social-status.show{display:block}.social-status.loading{background:#f8f0e4;color:#705329}.social-status.error{background:#fff0ef;color:#823e3a}.social-status.success{background:#eaf5eb;color:#315a39}
 .social-feed{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:650px;margin:14px auto 0;text-align:left}
 .social-post{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 10px 28px rgba(91,50,55,.06)}.post-head{display:flex;gap:10px;align-items:center}.post-head b{display:block;color:var(--ink);font-size:.9rem;overflow-wrap:anywhere}.post-head small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.social-post p{font-size:.88rem!important;line-height:1.45!important;margin:13px 0!important;color:var(--ink)!important;white-space:pre-wrap;overflow-wrap:anywhere}.post-photo{display:block;width:100%;max-height:430px;object-fit:cover;margin:13px 0 8px;border-radius:14px;background:#f7e4e0}.feed-state{grid-column:1/-1;padding:22px;text-align:center;color:var(--muted);font-size:.84rem}.feed-state.error{color:#823e3a}
+.post-actions{border-top:1px solid #f1e3e0;padding-top:10px;margin-top:12px}.like-button{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#fff4f3;color:var(--rose);padding:8px 12px;font:700 .78rem "DM Sans",sans-serif;cursor:pointer;transition:.18s}.like-button:hover{background:#fbe7e5;transform:translateY(-1px)}.like-button.liked{background:var(--wine);color:#fff}.like-button:disabled{opacity:.6;cursor:wait;transform:none}.like-heart{font-size:1rem;line-height:1}
 @media(max-width:680px){.social-feed{grid-template-columns:1fr}.social-tools{align-items:stretch}.social-tools>*{flex:1}.social-wall{padding:22px 15px}}
 
 /* CONTENT */
@@ -179,17 +180,17 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 
 
 <section class="section social-wall" id="momentos">
-<p class="eyebrow">COMPARTE UN RECUERDO</p>
-<h2>Momentos de Clarissa ✨</h2>
-<p>Comparte un mensaje, una foto o ambos para celebrar con Clarissa. ♡<br><span lang="en">Share a message, a photo, or both to celebrate with Clarissa.</span></p>
+<p class="eyebrow">MOMENTOS DE CLARISSA</p>
+<h2>📸 Comparte un Momento · Share a Moment</h2>
+<p>¿Tienes una foto favorita de Clarissa? Súbela para el slideshow. 💕<br><span lang="en">Have a favorite photo of Clarissa? Upload it for the slideshow.</span><br><br>¿Estás en la fiesta? ¡Comparte tus fotos de la noche también! ✨<br><span lang="en">At the party? Share your photos from the night too!</span></p>
 <form class="social-compose" id="socialForm">
-<div class="social-user"><div class="social-avatar" id="composeAvatar">♡</div><input id="socialName" name="socialName" type="text" maxlength="80" autocomplete="name" placeholder="Tu nombre / Your name" aria-label="Tu nombre / Your name" required></div>
-<textarea id="socialMessage" name="socialMessage" maxlength="1000" placeholder="Escribe algo bonito para Clarissa… / Share a message…" aria-label="Mensaje / Message"></textarea>
+<div class="social-user"><div class="social-avatar" id="composeAvatar">♡</div><input id="socialName" name="socialName" type="text" maxlength="50" autocomplete="name" placeholder="Tu Nombre · Your Name" aria-label="Tu Nombre · Your Name" required></div>
+<textarea id="socialMessage" name="socialMessage" maxlength="300" placeholder="Mensaje (opcional) · Message (optional)" aria-label="Mensaje · Message"></textarea>
 <input class="social-file" id="socialPhoto" name="socialPhoto" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif,.jpg,.jpeg,.png,.webp,.heic,.heif">
 <div class="photo-selection" id="photoSelection"><img id="photoPreview" alt="Vista previa de la foto seleccionada"><span id="photoName"></span><button class="remove-photo" id="removePhoto" type="button" aria-label="Quitar foto">×</button></div>
-<div class="social-tools"><label class="photo-button" id="photoButton" for="socialPhoto">📷 Agregar foto</label><button type="submit" class="social-submit" id="socialSubmit">Publicar ✦</button></div>
+<div class="social-tools"><label class="photo-button" id="photoButton" for="socialPhoto">📷 Agregar Foto · Add Photo</label><button type="submit" class="social-submit" id="socialSubmit">Publicar · Post ❤️</button></div>
 <div class="social-status" id="socialStatus" role="status" aria-live="polite"></div>
-<div class="social-note">Tu nombre es obligatorio • Mensaje o foto requerido • Fotos hasta 10 MB</div>
+<div class="social-note">Nombre requerido · Name required &nbsp;•&nbsp; Fotos hasta 10 MB</div>
 </form>
 <div class="social-feed" id="socialFeed" aria-live="polite">
 <div class="feed-state">Cargando momentos… / Loading memories…</div>
@@ -251,6 +252,12 @@ const supabaseHeaders={apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}
 const socialForm=document.getElementById("socialForm"),socialName=document.getElementById("socialName"),socialMessage=document.getElementById("socialMessage"),socialPhoto=document.getElementById("socialPhoto"),socialSubmit=document.getElementById("socialSubmit"),socialStatus=document.getElementById("socialStatus"),socialFeed=document.getElementById("socialFeed"),composeAvatar=document.getElementById("composeAvatar"),photoSelection=document.getElementById("photoSelection"),photoPreview=document.getElementById("photoPreview"),photoName=document.getElementById("photoName"),removePhoto=document.getElementById("removePhoto"),photoButton=document.getElementById("photoButton");
 const allowedPhotoTypes=new Set(["image/jpeg","image/png","image/webp","image/heic","image/heif"]);
 let previewUrl="";
+function getVoterId(){
+ const key="clarissa_xv_voter_id";let id=localStorage.getItem(key);
+ if(!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id||"")){id=crypto.randomUUID();localStorage.setItem(key,id)}
+ return id;
+}
+const voterId=getVoterId();
 
 function setSocialStatus(text,type=""){
  socialStatus.textContent=text;
@@ -290,13 +297,18 @@ function renderPosts(posts){
   name.textContent=String(post.name||"").trim();time.textContent=formatPostTime(post.created_at);identity.append(name,time);head.append(avatar,identity);article.append(head);
   if(post.photo_path){const img=document.createElement("img");img.className="post-photo";img.src=safePhotoUrl(post.photo_path);img.alt=`Foto compartida por ${name.textContent}`;img.loading="lazy";article.append(img)}
   if(post.message){const body=document.createElement("p");body.textContent=post.message;article.append(body)}
+  const actions=document.createElement("div");actions.className="post-actions";
+  const like=document.createElement("button");like.type="button";like.className=`like-button${post.liked?" liked":""}`;like.dataset.postId=post.id;like.setAttribute("aria-label",post.liked?"Quitar Me encanta / Unlike":"Me encanta / Like");
+  const heart=document.createElement("span");heart.className="like-heart";heart.textContent=post.liked?"♥":"♡";
+  const count=document.createElement("span");count.className="like-count";count.textContent=String(post.like_count||0);
+  const label=document.createElement("span");label.textContent="Me encanta";like.append(heart,count,label);actions.append(like);article.append(actions);
   socialFeed.append(article);
  });
 }
 async function loadPosts(){
  socialFeed.innerHTML='<div class="feed-state">Cargando momentos… / Loading memories…</div>';
  try{
-  const response=await fetch(`${POSTS_ENDPOINT}?select=name,message,photo_path,created_at&order=created_at.desc&limit=100`,{headers:supabaseHeaders});
+  const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/get_xv_posts`,{method:"POST",headers:{...supabaseHeaders,"Content-Type":"application/json"},body:JSON.stringify({p_voter_id:voterId})});
   if(!response.ok)throw new Error(`Posts request failed (${response.status})`);
   renderPosts(await response.json());
  }catch(error){
@@ -304,6 +316,17 @@ async function loadPosts(){
   socialFeed.innerHTML='<div class="feed-state error">No se pudieron cargar los momentos. Inténtalo de nuevo más tarde. / Memories could not be loaded.</div>';
  }
 }
+socialFeed.addEventListener("click",async event=>{
+ const button=event.target.closest(".like-button");if(!button||button.disabled)return;
+ const shouldLike=!button.classList.contains("liked");button.disabled=true;
+ try{
+  const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/toggle_xv_like`,{method:"POST",headers:{...supabaseHeaders,"Content-Type":"application/json"},body:JSON.stringify({p_post_id:Number(button.dataset.postId),p_voter_id:voterId,p_like:shouldLike})});
+  if(!response.ok)throw new Error(`Like request failed (${response.status})`);
+  const result=await response.json(),row=Array.isArray(result)?result[0]:result;
+  button.classList.toggle("liked",Boolean(row?.liked));button.querySelector(".like-heart").textContent=row?.liked?"♥":"♡";button.querySelector(".like-count").textContent=String(row?.like_count??0);button.setAttribute("aria-label",row?.liked?"Quitar Me encanta / Unlike":"Me encanta / Like");
+ }catch(error){console.error("Unable to update like",error);setSocialStatus("No se pudo guardar el corazón. Inténtalo otra vez. / Could not save the like.","error")}
+ finally{button.disabled=false}
+});
 socialName.addEventListener("input",()=>{composeAvatar.textContent=socialName.value.trim().charAt(0).toUpperCase()||"♡"});
 socialPhoto.addEventListener("change",()=>{
  const file=socialPhoto.files[0],error=validatePhoto(file);

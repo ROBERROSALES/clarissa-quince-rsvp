@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#6f4247">
+<title>Clarissa's XV · Admin</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+:root{--wine:#6f4247;--rose:#a7656d;--cream:#fff9f4;--paper:#fffdfb;--ink:#382c2d;--muted:#7d6d6d;--gold:#ba8b51;--line:#ead4d1;--red:#9e3f3f;--green:#376143;--shadow:0 18px 55px rgba(91,50,55,.12)}
+*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#f8e8e5,#fff8f3 45%,#f5e5df);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif;min-height:100vh}.page{width:min(100%,980px);margin:auto;padding:24px 16px 60px}header{text-align:center;margin:12px 0 24px}header .seal{width:54px;height:54px;display:grid;place-items:center;margin:auto;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--wine);font:700 1.25rem "Playfair Display",serif}h1,h2{font-family:"Playfair Display",serif}h1{font-size:clamp(2rem,6vw,3.2rem);margin:10px 0 4px}header p{color:var(--muted);margin:0}.card{background:rgba(255,253,251,.97);border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:var(--shadow)}.login{max-width:480px;margin:auto}.field{margin:14px 0}label{display:block;margin-bottom:7px;font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em}input{width:100%;padding:14px;border:1px solid var(--line);border-radius:13px;background:#fff;color:var(--ink);font:inherit;outline:none}input:focus{border-color:var(--rose);box-shadow:0 0 0 4px rgba(167,101,109,.1)}button{font:700 .84rem "DM Sans",sans-serif;cursor:pointer}.primary,.ghost,.danger,.star{border-radius:12px;padding:11px 14px}.primary{width:100%;border:0;background:var(--wine);color:#fff;margin-top:4px}.ghost{border:1px solid var(--line);background:#fff;color:var(--wine)}.danger{border:1px solid #e9baba;background:#fff2f1;color:var(--red)}.star{border:1px solid #ead2a1;background:#fff9e9;color:#735321}.star.on{background:#e7b95c;color:#3f2d0a}.hidden{display:none!important}.status{display:none;margin-top:13px;padding:11px;border-radius:11px;text-align:center;font-size:.8rem}.status.show{display:block}.status.error{background:#fff0ef;color:#823e3a}.status.ok{background:#eaf5eb;color:#315a39}.dashboard-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px}.dashboard-head h2{margin:0}.tools{display:flex;gap:8px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 15px}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:13px;text-align:center}.stat strong{display:block;font:700 1.45rem "Playfair Display",serif;color:var(--wine)}.stat span{font-size:.7rem;color:var(--muted)}.filters{display:flex;gap:7px;overflow:auto;padding-bottom:5px;margin-bottom:13px}.filter{white-space:nowrap;border:1px solid var(--line);background:#fff;color:var(--wine);border-radius:999px;padding:8px 12px}.filter.active{background:var(--wine);color:#fff;border-color:var(--wine)}.feed{display:grid;grid-template-columns:1fr 1fr;gap:12px}.post{background:#fff;border:1px solid var(--line);border-radius:18px;padding:15px;overflow:hidden}.post.is-hidden{border-style:dashed;opacity:.78}.post-head{display:flex;align-items:center;justify-content:space-between;gap:9px}.identity{display:flex;gap:9px;align-items:center;min-width:0}.avatar{width:38px;height:38px;flex:0 0 auto;border-radius:50%;display:grid;place-items:center;background:#efd6d2;color:var(--wine);font-family:"Playfair Display",serif;font-weight:700}.identity b,.identity small{display:block}.identity b{overflow-wrap:anywhere}.identity small{font-size:.67rem;color:var(--muted)}.badges{display:flex;gap:4px;flex-wrap:wrap;justify-content:flex-end}.badge{font-size:.62rem;border-radius:999px;padding:4px 7px;background:#f5e9e7;color:var(--wine)}.post img{display:block;width:100%;max-height:360px;object-fit:cover;border-radius:12px;margin:12px 0}.message{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.84rem;line-height:1.45}.meta{font-size:.72rem;color:var(--muted);margin:10px 0}.actions{display:flex;gap:7px;flex-wrap:wrap;border-top:1px solid #f1e3e0;padding-top:11px}.actions button{flex:1}.feed-state{grid-column:1/-1;text-align:center;padding:30px;color:var(--muted)}.delete-note{font-size:.68rem;color:var(--muted);margin:14px 0 0;text-align:center}
+@media(max-width:700px){.page{padding:12px 10px 40px}.card{padding:17px}.dashboard-head{align-items:flex-start;flex-direction:column}.stats{grid-template-columns:1fr 1fr}.feed{grid-template-columns:1fr}.tools{width:100%}.tools button{flex:1}.actions button{min-width:calc(50% - 5px)}}
+</style>
+</head>
+<body>
+<main class="page">
+<header><div class="seal">XV</div><h1>Clarissa's XV Admin</h1><p>Private moderation · Moderación privada</p></header>
+<section class="card login" id="loginCard">
+<h2>Admin Sign In</h2>
+<p>Use the authorized admin email and password.</p>
+<form id="loginForm">
+<div class="field"><label for="email">Email</label><input id="email" type="email" autocomplete="username" required></div>
+<div class="field"><label for="password">Password</label><input id="password" type="password" autocomplete="current-password" minlength="8" required></div>
+<button class="primary" id="loginButton" type="submit">Sign In · Entrar</button>
+<button class="ghost" id="signupButton" type="button" style="width:100%;margin-top:9px">First time? Create Admin Account</button>
+<div class="status" id="loginStatus" role="status" aria-live="polite"></div>
+</form>
+</section>
+<section class="card hidden" id="dashboard">
+<div class="dashboard-head"><div><h2>Social Wall</h2><p id="adminIdentity"></p></div><div class="tools"><button class="ghost" id="refreshButton" type="button">↻ Refresh</button><button class="ghost" id="logoutButton" type="button">Sign Out</button></div></div>
+<div class="stats"><div class="stat"><strong id="totalStat">0</strong><span>Total posts</span></div><div class="stat"><strong id="visibleStat">0</strong><span>Visible</span></div><div class="stat"><strong id="photoStat">0</strong><span>Photos</span></div><div class="stat"><strong id="slideshowStat">0</strong><span>Slideshow ⭐</span></div></div>
+<div class="filters" id="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="visible">Visible</button><button class="filter" data-filter="hidden">Hidden</button><button class="filter" data-filter="slideshow">Slideshow ⭐</button></div>
+<div class="status" id="dashboardStatus" role="status" aria-live="polite"></div>
+<div class="feed" id="adminFeed"><div class="feed-state">Loading posts…</div></div>
+<p class="delete-note">Hide is reversible. Delete permanently removes the post and its uploaded photo.</p>
+</section>
+</main>
+<script>
+const SUPABASE_URL="https://ifanlrqzpcxjucnnjngn.supabase.co",SUPABASE_KEY="sb_publishable_LFpB4pPuJvXJk63BZ0ag4w_37GeshGv";
+const loginCard=document.getElementById("loginCard"),loginForm=document.getElementById("loginForm"),loginButton=document.getElementById("loginButton"),signupButton=document.getElementById("signupButton"),loginStatus=document.getElementById("loginStatus"),dashboard=document.getElementById("dashboard"),dashboardStatus=document.getElementById("dashboardStatus"),adminFeed=document.getElementById("adminFeed"),adminIdentity=document.getElementById("adminIdentity");
+let posts=[],activeFilter="all",session=null;
+function setStatus(element,text,type=""){element.textContent=text;element.className=`status${text?" show":""}${type?` ${type}`:""}`}
+function publicPhotoUrl(path){return `${SUPABASE_URL}/storage/v1/object/public/xv-photos/${String(path).split("/").filter(Boolean).map(encodeURIComponent).join("/")}`}
+function authHeaders(extra={}){return {apikey:SUPABASE_KEY,Authorization:`Bearer ${session.access_token}`,...extra}}
+function saveSession(value){session=value;if(value)sessionStorage.setItem("clarissa_xv_admin_session",JSON.stringify(value));else sessionStorage.removeItem("clarissa_xv_admin_session")}
+function readSession(){try{return JSON.parse(sessionStorage.getItem("clarissa_xv_admin_session"))}catch{return null}}
+async function refreshSession(){
+ const stored=readSession();if(!stored?.refresh_token)return null;
+ if(stored.expires_at&&stored.expires_at*1000>Date.now()+60000)return stored;
+ const response=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({refresh_token:stored.refresh_token})});
+ if(!response.ok){saveSession(null);return null}const fresh=await response.json();fresh.expires_at=Math.floor(Date.now()/1000)+fresh.expires_in;saveSession(fresh);return fresh;
+}
+function formatTime(value){const date=new Date(value);return Number.isNaN(date.getTime())?"":new Intl.DateTimeFormat("en",{dateStyle:"medium",timeStyle:"short"}).format(date)}
+async function api(path,options={}){const response=await fetch(`${SUPABASE_URL}${path}`,{...options,headers:authHeaders(options.headers||{})});if(response.status===401){saveSession(null);showLogin();throw new Error("Session expired")}return response}
+function showLogin(){dashboard.classList.add("hidden");loginCard.classList.remove("hidden");loginForm.reset()}
+function showDashboard(){loginCard.classList.add("hidden");dashboard.classList.remove("hidden");adminIdentity.textContent=session.user?.email||"Authorized admin";loadPosts()}
+loginForm.addEventListener("submit",async event=>{
+ event.preventDefault();setStatus(loginStatus,"");loginButton.disabled=true;loginButton.textContent="Signing in…";
+ try{const response=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value.trim(),password:document.getElementById("password").value})});if(!response.ok)throw new Error("Invalid sign-in or unauthorized account.");const value=await response.json();value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;saveSession(value);const check=await api("/rest/v1/rpc/is_xv_admin",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});if(!check.ok||await check.json()!==true){saveSession(null);throw new Error("This account is not authorized for Clarissa's admin.")}showDashboard()}catch(error){setStatus(loginStatus,error.message||"Could not sign in.","error")}finally{loginButton.disabled=false;loginButton.textContent="Sign In · Entrar"}
+});
+signupButton.addEventListener("click",async()=>{
+ if(!loginForm.reportValidity())return;setStatus(loginStatus,"");signupButton.disabled=true;loginButton.disabled=true;signupButton.textContent="Creating account…";
+ try{const email=document.getElementById("email").value.trim().toLowerCase();if(email!=="chris114446@gmail.com")throw new Error("This email is not on the admin allowlist.");const response=await fetch(`${SUPABASE_URL}/auth/v1/signup?redirect_to=${encodeURIComponent(location.href)}`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email,password:document.getElementById("password").value})});if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.msg||detail.message||"Could not create the account.")}const value=await response.json();if(value.access_token){value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;saveSession(value);showDashboard()}else setStatus(loginStatus,"Check your email to confirm the account, then return here and sign in.","ok")}catch(error){setStatus(loginStatus,error.message||"Could not create the account.","error")}finally{signupButton.disabled=false;loginButton.disabled=false;signupButton.textContent="First time? Create Admin Account"}
+});
+document.getElementById("logoutButton").addEventListener("click",async()=>{try{await api("/auth/v1/logout",{method:"POST"})}catch{}saveSession(null);showLogin()});
+document.getElementById("refreshButton").addEventListener("click",loadPosts);
+document.getElementById("filters").addEventListener("click",event=>{const button=event.target.closest(".filter");if(!button)return;activeFilter=button.dataset.filter;document.querySelectorAll(".filter").forEach(item=>item.classList.toggle("active",item===button));renderPosts()});
+async function loadPosts(){
+ setStatus(dashboardStatus,"");adminFeed.innerHTML='<div class="feed-state">Loading posts…</div>';
+ try{const response=await api("/rest/v1/rpc/admin_get_xv_posts",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});if(!response.ok)throw new Error("Could not load posts.");posts=await response.json();renderStats();renderPosts()}catch(error){adminFeed.innerHTML=`<div class="feed-state">${error.message||"Could not load posts."}</div>`}
+}
+function renderStats(){document.getElementById("totalStat").textContent=posts.length;document.getElementById("visibleStat").textContent=posts.filter(post=>!post.is_hidden).length;document.getElementById("photoStat").textContent=posts.filter(post=>post.photo_path).length;document.getElementById("slideshowStat").textContent=posts.filter(post=>post.slideshow_selected).length}
+function filteredPosts(){return posts.filter(post=>activeFilter==="all"||(activeFilter==="visible"&&!post.is_hidden)||(activeFilter==="hidden"&&post.is_hidden)||(activeFilter==="slideshow"&&post.slideshow_selected))}
+function renderPosts(){
+ adminFeed.replaceChildren();const visible=filteredPosts();if(!visible.length){const empty=document.createElement("div");empty.className="feed-state";empty.textContent="No posts in this view.";adminFeed.append(empty);return}
+ visible.forEach(post=>{
+  const article=document.createElement("article");article.className=`post${post.is_hidden?" is-hidden":""}`;article.dataset.id=post.id;
+  const head=document.createElement("div");head.className="post-head";const identity=document.createElement("div");identity.className="identity";const avatar=document.createElement("div");avatar.className="avatar";avatar.textContent=post.name.trim().charAt(0).toUpperCase()||"?";const who=document.createElement("div"),name=document.createElement("b"),time=document.createElement("small");name.textContent=post.name;time.textContent=formatTime(post.created_at);who.append(name,time);identity.append(avatar,who);const badges=document.createElement("div");badges.className="badges";if(post.is_hidden){const badge=document.createElement("span");badge.className="badge";badge.textContent="Hidden";badges.append(badge)}if(post.slideshow_selected){const badge=document.createElement("span");badge.className="badge";badge.textContent="⭐ Slideshow";badges.append(badge)}head.append(identity,badges);article.append(head);
+  if(post.photo_path){const image=document.createElement("img");image.src=publicPhotoUrl(post.photo_path);image.alt=`Photo by ${post.name}`;image.loading="lazy";article.append(image)}if(post.message){const message=document.createElement("p");message.className="message";message.textContent=post.message;article.append(message)}
+  const meta=document.createElement("div");meta.className="meta";meta.textContent=`❤️ ${post.like_count||0} like${Number(post.like_count)===1?"":"s"}`;article.append(meta);
+  const actions=document.createElement("div");actions.className="actions";const hide=document.createElement("button");hide.className="ghost";hide.dataset.action="visibility";hide.textContent=post.is_hidden?"↩ Restore":"👁 Hide";const star=document.createElement("button");star.className=`star${post.slideshow_selected?" on":""}`;star.dataset.action="slideshow";star.textContent=post.slideshow_selected?"★ In Slideshow":"☆ Slideshow";const remove=document.createElement("button");remove.className="danger";remove.dataset.action="delete";remove.textContent="Delete";actions.append(hide,star,remove);article.append(actions);adminFeed.append(article);
+ });
+}
+adminFeed.addEventListener("click",async event=>{
+ const button=event.target.closest("button[data-action]");if(!button||button.disabled)return;const article=button.closest(".post"),post=posts.find(item=>String(item.id)===article.dataset.id);if(!post)return;
+ if(button.dataset.action==="delete"&&!confirm(`Permanently delete ${post.name}'s post${post.photo_path?" and photo":""}? This cannot be undone.`))return;
+ article.querySelectorAll("button").forEach(item=>item.disabled=true);setStatus(dashboardStatus,"Saving…","ok");
+ try{
+  if(button.dataset.action==="visibility")await updatePost(post.id,{is_hidden:!post.is_hidden});
+  if(button.dataset.action==="slideshow")await updatePost(post.id,{slideshow_selected:!post.slideshow_selected});
+  if(button.dataset.action==="delete")await deletePost(post);
+  setStatus(dashboardStatus,"Saved.","ok");await loadPosts();
+ }catch(error){setStatus(dashboardStatus,error.message||"Could not save the change.","error");article.querySelectorAll("button").forEach(item=>item.disabled=false)}
+});
+async function updatePost(id,changes){const response=await api(`/rest/v1/xv_posts?id=eq.${encodeURIComponent(id)}`,{method:"PATCH",headers:{"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(changes)});if(!response.ok)throw new Error("Could not update this post.")}
+async function deletePost(post){if(post.photo_path){const response=await api(`/storage/v1/object/xv-photos/${post.photo_path.split("/").map(encodeURIComponent).join("/")}`,{method:"DELETE"});if(!response.ok&&response.status!==404)throw new Error("The photo could not be deleted, so the post was kept.")}const response=await api(`/rest/v1/xv_posts?id=eq.${encodeURIComponent(post.id)}`,{method:"DELETE",headers:{Prefer:"return=minimal"}});if(!response.ok)throw new Error("Could not delete this post.")}
+(async()=>{session=await refreshSession();if(session)showDashboard();else showLogin()})();
+</script>
+</body>
+</html>
