@@ -53,6 +53,19 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 .tiny{text-align:center;color:var(--muted);font-size:.75rem;line-height:1.45;margin:13px 0 0}.msg{display:none;padding:15px;margin-top:13px;border-radius:14px;text-align:center}.msg.show{display:block}.msg.err{background:#fff0ef;color:#823e3a}
 .success{display:none;text-align:center;padding:26px 8px}.success.show{display:block}.success .check{width:62px;height:62px;border-radius:50%;margin:0 auto 12px;background:#eaf5eb;color:#315a39;display:grid;place-items:center;font-size:1.6rem}.success h3{font-family:"Playfair Display",serif;font-size:2rem;margin:0 0 8px}.success p{color:var(--muted);margin:0}
 
+
+/* XV SOCIAL DEMO */
+.social-demo{background:linear-gradient(180deg,rgba(255,253,251,.96),rgba(249,235,231,.88))}
+.social-compose{max-width:650px;margin:22px auto 0;padding:18px;border:1px solid var(--line);border-radius:22px;background:#fff;text-align:left;box-shadow:0 12px 32px rgba(91,50,55,.07)}
+.social-user{display:flex;align-items:center;gap:10px}.social-avatar,.post-avatar{flex:0 0 auto;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#f1d6d2,#dcaeb0);color:var(--wine);font-family:"Playfair Display",serif;font-weight:700}
+.social-user input{padding:11px 13px}.social-compose textarea{margin-top:10px;min-height:82px}
+.social-tools{display:flex;justify-content:space-between;gap:10px;margin-top:10px}.social-tools button{border:1px solid var(--line);border-radius:12px;padding:10px 13px;font:700 .82rem "DM Sans",sans-serif;cursor:pointer}.demo-photo{background:#fff;color:var(--wine)}.demo-post{background:var(--wine);color:#fff}
+.demo-note{text-align:center;color:var(--muted);font-size:.7rem;margin-top:10px}
+.social-feed{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:650px;margin:14px auto 0;text-align:left}
+.social-post{background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;box-shadow:0 10px 28px rgba(91,50,55,.06)}.post-head{display:flex;gap:10px;align-items:center}.post-head b{display:block;color:var(--ink);font-size:.9rem}.post-head small{display:block;color:var(--muted);font-size:.68rem;margin-top:2px}.social-post p{font-size:.88rem!important;line-height:1.45!important;margin:13px 0!important;color:var(--ink)!important}.post-actions{border-top:1px solid #f1e3e0;padding-top:10px;color:var(--rose);font-size:.75rem;font-weight:700}
+.photo-placeholder{aspect-ratio:4/3;margin:13px 0 8px;border-radius:14px;background:linear-gradient(135deg,#f7e4e0,#f1d3cd);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:var(--wine);padding:14px}.photo-placeholder span{font-size:2rem}.photo-placeholder b{font-size:.78rem;margin-top:5px}.photo-placeholder small{font-size:.68rem;color:var(--muted);margin-top:3px}
+@media(max-width:680px){.social-feed{grid-template-columns:1fr}.social-tools{align-items:stretch}.social-tools button{flex:1}.social-demo{padding:22px 15px}}
+
 /* CONTENT */
 .section{margin-top:22px;border:1px solid var(--line);border-radius:27px;background:#fff9;padding:28px;text-align:center}.eyebrow{margin:0;color:var(--gold);font-size:.7rem;letter-spacing:.16em;font-weight:800}.section h2{font-size:clamp(1.7rem,5vw,2.5rem);margin:7px 0 10px}.section p{color:var(--muted);line-height:1.6;max-width:640px;margin:0 auto}
 .journey-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:15px;margin:22px auto 0;max-width:610px}.memory{margin:0;background:#fff;padding:8px;border:1px solid var(--line);border-radius:24px;box-shadow:0 16px 38px rgba(91,50,55,.09);transform:rotate(-1.2deg)}.memory.current{transform:rotate(1.2deg)}.memory img{display:block;width:100%;max-height:300px;aspect-ratio:3/4;object-fit:cover;border-radius:18px}.memory figcaption{padding:9px 4px 4px}.memory small{display:block;color:var(--gold);font-size:.64rem;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.memory b{display:block;font-family:"Playfair Display",serif;font-size:1rem;margin-top:3px}.journey-mark{display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--gold)}.journey-mark span{width:44px;height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;background:#fff;font-family:"Playfair Display",serif;color:var(--rose)}
@@ -164,6 +177,23 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 </div>
 </section>
 
+
+<section class="section social-demo" id="momentos">
+<p class="eyebrow">DEMO • PRÓXIMAMENTE</p>
+<h2>Momentos de Clarissa ✨</h2>
+<p>Un rinconcito para compartir mensajes y fotos de los XV. Esta es una vista previa — todavía no publica nada.</p>
+<div class="social-compose">
+<div class="social-user"><div class="social-avatar">♡</div><input type="text" placeholder="Tu nombre / Display name" aria-label="Display name"></div>
+<textarea placeholder="Escribe algo bonito para Clarissa… / Share a message…" aria-label="Message"></textarea>
+<div class="social-tools"><button type="button" class="demo-photo">📷 Agregar foto</button><button type="button" class="demo-post">Publicar ✦</button></div>
+<div class="demo-note">Demo solamente • No se guardará ni publicará nada todavía.</div>
+</div>
+<div class="social-feed">
+<article class="social-post"><div class="post-head"><div class="post-avatar">M</div><div><b>María ♡</b><small>Familia • hace un momento</small></div></div><p>¡Qué emoción! Ya queremos celebrar contigo, Clarissa. 🤠💕</p><div class="post-actions">♡ Me encanta &nbsp; · &nbsp; ✨ Mis XV</div></article>
+<article class="social-post photo-post"><div class="post-head"><div class="post-avatar">A</div><div><b>Anonymous</b><small>Invitado • demo</small></div></div><div class="photo-placeholder"><span>📸</span><b>Las fotos de los invitados aparecerán aquí</b><small>Guest photos will show here</small></div><p>Una noche para recordar ✨</p><div class="post-actions">♡ 15</div></article>
+</div>
+</section>
+
 <footer class="footer">Con cariño, la familia de <b>Clarissa</b> ♡</footer>
 </main>
 <a class="mobile-rsvp" href="#rsvp">Confirmar RSVP ✦</a>
@@ -209,6 +239,7 @@ document.getElementById("shareBtn")?.addEventListener("click",async()=>{const da
 function addToCalendar(){const ics=["BEGIN:VCALENDAR","VERSION:2.0","BEGIN:VEVENT","DTSTART:20261024T230000Z","DTEND:20261025T060000Z","SUMMARY:Clarissa Valeria Rosales - Mis XV","LOCATION:Paloma's Center Hall, 8612 N Houston Rosslyn Rd, Houston, TX 77088","DESCRIPTION:Quinceañera de Clarissa Valeria Rosales","END:VEVENT","END:VCALENDAR"].join("\r\n");const blob=new Blob([ics],{type:"text/calendar"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="Clarissa-Mis-XV.ics";a.click();URL.revokeObjectURL(a.href)}
 document.getElementById("calendarBtn")?.addEventListener("click",addToCalendar);
 document.getElementById("successCalendarBtn")?.addEventListener("click",addToCalendar);
+document.querySelectorAll(".demo-photo,.demo-post").forEach(btn=>btn.addEventListener("click",()=>alert("Demo solamente ✨\nLa versión final permitirá subir fotos y mensajes sin iniciar sesión.")));
 function celebrate(){for(let i=0;i<18;i++){const s=document.createElement("span");s.className="spark";s.textContent=i%3===0?"✦":i%3===1?"♡":"✨";s.style.left=(20+Math.random()*60)+"vw";s.style.top=(65+Math.random()*18)+"vh";s.style.animationDelay=(Math.random()*.35)+"s";document.body.appendChild(s);setTimeout(()=>s.remove(),1700)}}
 </script>
 </body>
