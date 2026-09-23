@@ -37,7 +37,7 @@ input,select,textarea{width:100%;border:1px solid var(--line);border-radius:15px
 <section class="finale"><div class="horse-art">♞</div><p>En honor a <b>El Patrón</b> 🖤</p><h2>Nos vemos en los XV.</h2><span>October 24, 2026 • 6:00 PM</span></section>
 <footer class="footer">Con cariño, la familia de <b>Clarissa</b> ♡</footer></main>
 <script>
-const RSVP_ENDPOINT="https://script.google.com/macros/s/AKfycbzTBwqvJ1Ffw3L6_h4TdGq2RcfeKcodiW3zi8cT0l0Gn_JLmIBdGopDevKT_l4Sb39EaA/exec";
+const RSVP_ENDPOINT="https://script.google.com/macros/s/AKfycbzCJ7Y7X28uNSBQfccvL51DoJkMD0Dr1l40xer5dRQM6jOlFxw1A2fcm4VwFqWbIsBi/exec";
 const form=document.getElementById("rsvpForm"),yesFields=document.getElementById("yesFields"),message=document.getElementById("message"),submitBtn=document.getElementById("submitBtn");
 const partyRadios=[...document.querySelectorAll('input[name="partySize"]')];
 document.querySelectorAll('input[name="attending"]').forEach(r=>r.addEventListener("change",()=>{const y=document.getElementById("yes").checked;yesFields.classList.toggle("show",y);partyRadios.forEach(p=>p.required=y);if(!y){partyRadios.forEach(p=>p.checked=false);document.getElementById("guestNames").value=""}}));
