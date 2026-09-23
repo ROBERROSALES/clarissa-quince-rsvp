@@ -20,7 +20,7 @@ body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.065;b
 .script{font-family:"Parisienne",cursive;color:var(--rose);font-size:clamp(2.2rem,5vw,3.35rem);line-height:1;margin:5px 0}
 h1{font-family:"Playfair Display",serif;font-size:clamp(2.6rem,7vw,5rem);line-height:.98;letter-spacing:-.035em;margin:8px 0 12px;max-width:680px}
 .rule{display:flex;align-items:center;gap:12px;color:var(--gold);font-weight:700;font-size:.72rem;letter-spacing:.15em;margin:18px 0 0}.rule:before,.rule:after{content:"";height:1px;width:45px;background:#d8b9b5}
-.sub{max-width:590px;margin:12px 0 0;color:var(--muted);line-height:1.55;font-size:.98rem}
+.sub{max-width:590px;margin:15px 0 0;display:grid;gap:8px}.sub-line{display:block;padding:10px 13px;border-left:2px solid var(--gold2);background:rgba(255,253,251,.62);border-radius:0 12px 12px 0;color:var(--muted);line-height:1.45;font-size:.92rem}.sub-line b{display:block;margin-bottom:2px;color:var(--wine);font-size:.65rem;letter-spacing:.13em;text-transform:uppercase}.sub-line.en{border-left-color:var(--pink);background:rgba(255,255,255,.48)}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.chip{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:999px;font-size:.82rem;font-weight:600}
 .hero-btn{display:inline-block;margin-top:17px;padding:13px 18px;border-radius:14px;background:var(--wine);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 10px 22px rgba(111,66,71,.2)}
 
@@ -77,7 +77,7 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 <div class="script">Mis Quince Años</div>
 <h1>Clarissa Valeria<br>Rosales</h1>
 <div class="rule">OCTOBER 24, 2026</div>
-<p class="sub">Una noche para celebrar a Clarissa Valeria con familia, música, baile y recuerdos inolvidables.<br><span lang="en">A night to celebrate Clarissa Valeria with family, music, dancing, and unforgettable memories.</span></p>
+<div class="sub"><span class="sub-line"><b>Español</b>Una noche para celebrar a Clarissa Valeria con familia, música, baile y recuerdos inolvidables.</span><span class="sub-line en" lang="en"><b>English</b>A night to celebrate Clarissa Valeria with family, music, dancing, and unforgettable memories.</span></div>
 <div class="chips"><span class="chip">🕕 6:00 PM – 1:00 AM</span><span class="chip">🤠 Western preferred</span><span class="chip">💌 RSVP by Oct 11</span></div>
 <a href="#rsvp" class="hero-btn">Confirmar RSVP ✦</a>
 </div>
