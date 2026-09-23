@@ -24,17 +24,19 @@ h1{font-family:"Playfair Display",serif;font-size:clamp(2.6rem,7vw,5rem);line-he
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:17px}.chip{border:1px solid var(--line);background:#fff;padding:9px 13px;border-radius:999px;font-size:.82rem;font-weight:600}
 .hero-btn{display:inline-block;margin-top:17px;padding:13px 18px;border-radius:14px;background:var(--wine);color:#fff;text-decoration:none;font-weight:700;box-shadow:0 10px 22px rgba(111,66,71,.2)}
 
-/* Decorative quince / western / castle visual */
-.hero-art{position:relative;min-height:410px;border:1px solid #e7cbc7;border-radius:190px 190px 34px 34px;background:
- radial-gradient(circle at 50% 22%,rgba(255,255,255,.95) 0 11%,transparent 11.5%),
- linear-gradient(180deg,#f4d9d6 0,#f9eae4 45%,#e9c7bf 100%);
- box-shadow:0 24px 60px rgba(82,49,52,.16);overflow:hidden}
-.hero-art:before{content:"";position:absolute;inset:16px;border:1px solid rgba(186,139,81,.35);border-radius:175px 175px 26px 26px}
-.art-stars{position:absolute;inset:0;background-image:radial-gradient(var(--gold2) 1px,transparent 1px);background-size:36px 36px;opacity:.22}
-.art-moon{position:absolute;top:55px;left:50%;transform:translateX(-50%);width:118px;height:118px;border-radius:50%;background:#fff7ed;border:1px solid #ead5bd;box-shadow:0 0 45px rgba(255,250,235,.9)}
-.art-xv{position:absolute;top:93px;left:50%;transform:translateX(-50%);font-family:"Playfair Display",serif;font-size:2rem;color:var(--wine);z-index:2}
-.castle{position:absolute;left:50%;bottom:57px;transform:translateX(-50%);width:245px;height:165px}
-.tower{position:absolute;bottom:0;width:64px;height:116px;background:linear-gradient(#7c4c51,#59383c);border-radius:4px 4px 0 0}.tower:before{content:"";position:absolute;top:-30px;left:0;border-left:32px solid transparent;border-right:32px solid transparent;border-bottom:30px solid #59383c}.tower.left{left:0}.tower.right{right:0}.keep{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:120px;height:145px;background:linear-gradient(#8d5960,#603d42);border-radius:5px 5px 0 0}.keep:before{content:"";position:absolute;top:-38px;left:0;border-left:60px solid transparent;border-right:60px solid transparent;border-bottom:38px solid #603d42}.door{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:38px;height:60px;border-radius:22px 22px 0 0;background:#2f2526}.window{position:absolute;width:13px;height:24px;border-radius:9px 9px 2px 2px;background:#e8c98c;box-shadow:0 0 14px rgba(232,201,140,.6)}.w1{left:25px;top:33px}.w2{right:25px;top:33px}.horse-silhouette{position:absolute;left:28px;bottom:28px;font-size:3.1rem;color:#33282a;transform:scaleX(-1);opacity:.92}.art-caption{position:absolute;right:25px;bottom:27px;color:#6a464a;font-family:"Parisienne",cursive;font-size:1.45rem}
+/* Quince crest */
+.hero-art{position:relative;min-height:410px;border:1px solid #e7cbc7;border-radius:190px 190px 34px 34px;background:radial-gradient(circle at 50% 42%,rgba(255,253,249,.98) 0 28%,transparent 28.5%),linear-gradient(180deg,#f5deda 0,#f9ece7 58%,#edcec6 100%);box-shadow:0 24px 60px rgba(82,49,52,.16);overflow:hidden;display:grid;place-items:center}
+.hero-art:before{content:"";position:absolute;inset:16px;border:1px solid rgba(186,139,81,.45);border-radius:175px 175px 26px 26px}
+.crest-stars{position:absolute;inset:0;background-image:radial-gradient(var(--gold2) 1px,transparent 1px);background-size:38px 38px;opacity:.18}
+.crest{position:relative;z-index:2;width:245px;height:245px;border:1px solid rgba(186,139,81,.62);border-radius:50%;display:grid;place-items:center;background:rgba(255,252,247,.78);box-shadow:0 16px 45px rgba(111,66,71,.09)}
+.crest:before,.crest:after{content:"✦";position:absolute;left:50%;transform:translateX(-50%);color:var(--gold);font-size:1.05rem}.crest:before{top:-10px}.crest:after{bottom:-10px}
+.crest-xv{font-family:"Playfair Display",serif;font-size:5.2rem;line-height:1;color:var(--wine);letter-spacing:-.09em;transform:translateX(-.05em)}
+.crest-mark{position:absolute;bottom:39px;width:72px;height:28px;border-bottom:1px solid var(--gold);border-radius:50%;color:var(--wine);font-size:1.45rem;text-align:center;line-height:29px}
+.crest-flourish{position:absolute;left:50%;top:42px;transform:translateX(-50%);color:var(--rose);font-size:1.05rem;letter-spacing:.32em;white-space:nowrap}
+.crest-horse{position:absolute;left:30px;bottom:30px;font-size:2.6rem;color:#4a3436;transform:scaleX(-1);opacity:.88}
+.crest-hat{position:absolute;right:30px;bottom:32px;width:58px;height:20px;border:2px solid #6f4b4e;border-radius:50%;transform:rotate(-10deg);opacity:.82}
+.crest-hat:before{content:"";position:absolute;width:31px;height:24px;left:12px;top:-17px;border:2px solid #6f4b4e;border-bottom:0;border-radius:50% 50% 15% 15%}
+.crest-rose{position:absolute;color:var(--rose);font-size:1.15rem;opacity:.75}.crest-rose.r1{left:36px;top:96px}.crest-rose.r2{right:34px;top:118px}
 
 /* COUNTDOWN */
 .countdown-wrap{margin:2px 0 24px;padding:22px 18px 23px;border:1px solid rgba(186,139,81,.4);border-radius:24px;background:linear-gradient(135deg,#74454b,#955d65);box-shadow:0 18px 48px rgba(91,50,55,.18);text-align:center;position:relative;overflow:hidden}
@@ -84,10 +86,16 @@ input,textarea{width:100%;padding:15px 16px;border:1px solid var(--line);border-
 <div class="chips"><span class="chip">🕕 6:00 PM – 1:00 AM</span><span class="chip">🤠 Western preferred</span><span class="chip">💌 RSVP by Sep 30</span></div>
 <a href="#rsvp" class="hero-btn">Confirmar RSVP ✦</a>
 </div>
-<div class="hero-art" aria-label="Royal western quinceañera illustration">
-<div class="art-stars"></div><div class="art-moon"></div><div class="art-xv">XV</div>
-<div class="castle"><div class="tower left"></div><div class="keep"><div class="door"></div><div class="window w1"></div><div class="window w2"></div></div><div class="tower right"></div></div>
-<div class="horse-silhouette">♞</div><div class="art-caption">Clarissa Valeria</div>
+<div class="hero-art" aria-label="Elegant Western quinceañera crest">
+<div class="crest-stars"></div>
+<div class="crest">
+<div class="crest-flourish">✦ ♡ ✦</div>
+<div class="crest-xv">XV</div>
+<div class="crest-mark">♞</div>
+</div>
+<div class="crest-horse">♞</div>
+<div class="crest-hat" aria-hidden="true"></div>
+<div class="crest-rose r1">✿</div><div class="crest-rose r2">✿</div>
 </div>
 </section>
 
