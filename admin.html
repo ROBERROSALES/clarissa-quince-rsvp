@@ -63,17 +63,27 @@ async function refreshSession(){
  const response=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({refresh_token:stored.refresh_token})});
  if(!response.ok){saveSession(null);return null}const fresh=await response.json();fresh.expires_at=Math.floor(Date.now()/1000)+fresh.expires_in;saveSession(fresh);return fresh;
 }
+async function isAuthorizedAdmin(candidate=session){
+ if(!candidate?.access_token)return false;
+ const response=await fetch(`${SUPABASE_URL}/rest/v1/rpc/is_xv_admin`,{method:"POST",headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${candidate.access_token}`,"Content-Type":"application/json"},body:"{}"});
+ if(!response.ok)return false;
+ return await response.json()===true;
+}
+async function requireAuthorizedSession(candidate){
+ if(await isAuthorizedAdmin(candidate)){saveSession(candidate);return true}
+ saveSession(null);return false;
+}
 function formatTime(value){const date=new Date(value);return Number.isNaN(date.getTime())?"":new Intl.DateTimeFormat("en",{dateStyle:"medium",timeStyle:"short"}).format(date)}
 async function api(path,options={}){const response=await fetch(`${SUPABASE_URL}${path}`,{...options,headers:authHeaders(options.headers||{})});if(response.status===401){saveSession(null);showLogin();throw new Error("Session expired")}return response}
 function showLogin(){dashboard.classList.add("hidden");loginCard.classList.remove("hidden");loginForm.reset()}
 function showDashboard(){loginCard.classList.add("hidden");dashboard.classList.remove("hidden");adminIdentity.textContent=session.user?.email||"Authorized admin";loadRsvps();loadPosts()}
 loginForm.addEventListener("submit",async event=>{
  event.preventDefault();setStatus(loginStatus,"");loginButton.disabled=true;loginButton.textContent="Signing in…";
- try{const response=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value.trim(),password:document.getElementById("password").value})});if(!response.ok)throw new Error("Invalid sign-in or unauthorized account.");const value=await response.json();value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;saveSession(value);const check=await api("/rest/v1/rpc/is_xv_admin",{method:"POST",headers:{"Content-Type":"application/json"},body:"{}"});if(!check.ok||await check.json()!==true){saveSession(null);throw new Error("This account is not authorized for Clarissa's admin.")}showDashboard()}catch(error){setStatus(loginStatus,error.message||"Could not sign in.","error")}finally{loginButton.disabled=false;loginButton.textContent="Sign In · Entrar"}
+ try{const response=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value.trim(),password:document.getElementById("password").value})});if(!response.ok)throw new Error("Invalid email or password.");const value=await response.json();value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;if(!await requireAuthorizedSession(value))throw new Error("This account is not authorized for Clarissa's admin.");showDashboard()}catch(error){setStatus(loginStatus,error.message||"Could not sign in.","error")}finally{loginButton.disabled=false;loginButton.textContent="Sign In · Entrar"}
 });
 signupButton.addEventListener("click",async()=>{
  if(!loginForm.reportValidity())return;setStatus(loginStatus,"");signupButton.disabled=true;loginButton.disabled=true;signupButton.textContent="Creating account…";
- try{const email=document.getElementById("email").value.trim().toLowerCase();const response=await fetch(`${SUPABASE_URL}/auth/v1/signup?redirect_to=${encodeURIComponent(location.href)}`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email,password:document.getElementById("password").value})});if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.msg||detail.message||"Could not create the account.")}const value=await response.json();if(value.access_token){value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;saveSession(value);showDashboard()}else setStatus(loginStatus,"Check your email to confirm the account, then return here and sign in.","ok")}catch(error){setStatus(loginStatus,error.message||"Could not create the account.","error")}finally{signupButton.disabled=false;loginButton.disabled=false;signupButton.textContent="First time? Create Admin Account"}
+ try{const email=document.getElementById("email").value.trim().toLowerCase();const response=await fetch(`${SUPABASE_URL}/auth/v1/signup?redirect_to=${encodeURIComponent(location.href)}`,{method:"POST",headers:{apikey:SUPABASE_KEY,"Content-Type":"application/json"},body:JSON.stringify({email,password:document.getElementById("password").value})});if(!response.ok){const detail=await response.json().catch(()=>({}));throw new Error(detail.msg||detail.message||"Could not create the account.")}const value=await response.json();if(value.access_token){value.expires_at=Math.floor(Date.now()/1000)+value.expires_in;if(!await requireAuthorizedSession(value))throw new Error("This account is not authorized for Clarissa's admin.");showDashboard()}else setStatus(loginStatus,"Check your email to confirm the account, then return here and sign in.","ok")}catch(error){setStatus(loginStatus,error.message||"Could not create the account.","error")}finally{signupButton.disabled=false;loginButton.disabled=false;signupButton.textContent="First time? Create Admin Account"}
 });
 document.getElementById("logoutButton").addEventListener("click",async()=>{try{await api("/auth/v1/logout",{method:"POST"})}catch{}saveSession(null);showLogin()});
 document.querySelectorAll(".admin-tab").forEach(button=>button.addEventListener("click",()=>{document.querySelectorAll(".admin-tab").forEach(tab=>{const selected=tab===button;tab.classList.toggle("active",selected);tab.setAttribute("aria-selected",String(selected))});document.querySelectorAll('[role="tabpanel"]').forEach(panel=>panel.classList.toggle("hidden",panel.id!==button.dataset.panel))}));
@@ -151,7 +161,7 @@ adminFeed.addEventListener("click",async event=>{
 });
 async function updatePost(id,changes){const response=await api(`/rest/v1/xv_posts?id=eq.${encodeURIComponent(id)}`,{method:"PATCH",headers:{"Content-Type":"application/json",Prefer:"return=minimal"},body:JSON.stringify(changes)});if(!response.ok)throw new Error("Could not update this post.")}
 async function deletePost(post){if(post.photo_path){const response=await api(`/storage/v1/object/xv-photos/${post.photo_path.split("/").map(encodeURIComponent).join("/")}`,{method:"DELETE"});if(!response.ok&&response.status!==404)throw new Error("The photo could not be deleted, so the post was kept.")}const response=await api(`/rest/v1/xv_posts?id=eq.${encodeURIComponent(post.id)}`,{method:"DELETE",headers:{Prefer:"return=minimal"}});if(!response.ok)throw new Error("Could not delete this post.")}
-(async()=>{session=await refreshSession();if(session)showDashboard();else showLogin()})();
+(async()=>{const restored=await refreshSession();if(restored&&await requireAuthorizedSession(restored))showDashboard();else showLogin()})();
 </script>
 </body>
 </html>
